@@ -1,1 +1,1 @@
-"# study" 
+Baekjoon Online Judge coding study
