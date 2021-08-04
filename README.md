@@ -1,1 +1,1 @@
-Baekjoon Online Judge coding study
+Coding Study
