@@ -1,3 +1,5 @@
+// n!, m!, k!(k = n - m) 에 2와 5가 몇 개 들어있는지 개수를 구하고 n!에서 구한 개수에서 m!, k!에서 구한 개수를 빼준다.
+// 그리고 10 이 있어야 맨 뒤 수가 0 이기 때문에 남은 2와 5의 개수 중 작은 값을 출력한다.
 #include <iostream>
 #include <algorithm>
 using namespace std;
