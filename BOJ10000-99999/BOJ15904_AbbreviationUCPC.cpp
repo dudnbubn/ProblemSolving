@@ -1,3 +1,5 @@
+// input에 공백이 있음을 유의.
+
 #include <iostream>
 #include <string>
 using namespace std;
