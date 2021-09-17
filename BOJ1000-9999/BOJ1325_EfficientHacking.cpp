@@ -1,3 +1,5 @@
+// 노드의 수가 많으므로 DFS를 썼더니 당연히(?) 시간초과가 나서 BFS를 이용하여 해결했다.
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
