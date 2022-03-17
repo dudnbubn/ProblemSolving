@@ -1,3 +1,5 @@
+// key point : Catalan Number
+
 #include <iostream>
 
 using namespace std;
