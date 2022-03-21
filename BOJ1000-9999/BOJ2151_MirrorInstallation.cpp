@@ -53,20 +53,15 @@ int main() {
 	while (!q.empty()) {
 		cur = q.top();
 		q.pop();
-		//cout << "cur : { { " << cur.first.first << ", " << cur.first.second << " }, { " << cur.second.first << ", " << cur.second.second << " } }\n";
 		if (board[cur.first.first][cur.first.second] == '#' && (cur.first.first != door_i || cur.first.second != door_j)) {
-			//cout << "result : min(" << result << ", " << cur.second.second << ") = ";
 			result = min(result, cur.second.second);
-			//cout << result << "\n";
 			continue;
 		}
 		next_i = cur.first.first + di[cur.second.first];
 		next_j = cur.first.second + dj[cur.second.first];
-		//cout << "\tnext : " << next_i << ", " << next_j << "\n";
 		if (!(next_i < 1 || next_j < 1 || next_i > n || next_j > n || board[next_i][next_j] == '*')) {
 			if (!visited[next_i][next_j][cur.second.first]) {
 				visited[next_i][next_j][cur.second.first] = true;
-				//cout << "\tq.push({ { " << next_i << ", " << next_j << " }, { " << cur.second.first << ", " << cur.second.second << " } }\n";
 				q.push({ {next_i,next_j}, cur.second });
 			}
 		}
@@ -79,7 +74,6 @@ int main() {
 				if (!visited[next_i][next_j][(cur.second.first + k) % 4]) {
 					visited[next_i][next_j][(cur.second.first + k) % 4] = true;
 					q.push({ {next_i,next_j}, {(cur.second.first + k) % 4, cur.second.second + 1} });
-					//cout << "\tq.push({ { " << next_i << ", " << next_j << " }, { " << (cur.second.first + k) % 4 << ", " << cur.second.second + 1 << " } }\n";
 				}
 			}
 		}
