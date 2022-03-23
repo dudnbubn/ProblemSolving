@@ -32,11 +32,9 @@ int main() {
 	while (!q.empty()) {
 		move++;
 		qsz = q.size();
-		//cout << "\nmove : " << move << "\n";
 		for (int i = 0; i < qsz; i++) {
 			cur = q.front();
 			q.pop();
-			//cout << "cur : " << cur.first.first << ", " << cur.first.second << ", " << cur.second << "\n";
 			if (cur.first.first == h && cur.first.second == w) {
 				cout << move;
 				return 0;
@@ -51,7 +49,6 @@ int main() {
 				if (!visited[next_i][next_j][cur.second] && board[next_i][next_j] == 0) {
 					visited[next_i][next_j][cur.second] = true;
 					q.push({ {next_i, next_j}, cur.second });
-					//cout << "\tq.push({ {" << next_i << ", " << next_j << "}, " << cur.second << " })\n";
 				}
 			}
 			if (cur.second < K) {
@@ -64,7 +61,6 @@ int main() {
 					if (!visited[next_i][next_j][cur.second + 1] && board[next_i][next_j] == 0) {
 						visited[next_i][next_j][cur.second + 1] = true;
 						q.push({ {next_i, next_j}, cur.second + 1 });
-						//cout << "\tq.push({ {" << next_i << ", " << next_j << "}, " << cur.second + 1<< " })\n";
 					}
 				}
 			}
