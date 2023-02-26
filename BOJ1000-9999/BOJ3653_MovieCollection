@@ -1,0 +1,74 @@
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+#define INF 200'000
+
+int arr[INF + 1];
+int tree[INF * 4];
+int leaf[INF + 1];
+int indexOf[INF + 1];
+
+void set_tree(int start, int end, int node) {
+	if (start == end) {
+		leaf[start] = node;
+		return;
+	}
+
+	int mid = (start + end) / 2;
+	set_tree(start, mid, node * 2);
+	set_tree(mid + 1, end, node * 2 + 1);
+}
+
+int get_value(int start, int end, int node, int left, int right) {
+	if (start > right || end < left)	return 0;
+	if (left <= start && end <= right)	return tree[node];
+
+	int mid = (start + end) / 2;
+	return get_value(start, mid, node * 2, left, right) + get_value(mid + 1, end, node * 2 + 1, left, right);
+}
+
+void update(int index) {
+	int node = leaf[index];
+	while (node) {
+		tree[node]++;
+		node /= 2;
+	}
+}
+
+
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
+	cout.tie(nullptr);
+
+	int TC;
+	cin >> TC;
+
+	int N, M;
+	while (TC--) {
+		memset(tree, 0, sizeof(tree));
+
+		cin >> N >> M;
+		for (int i = 1; i <= N; i++) {
+			arr[i] = N - i + 1;
+			indexOf[N - i + 1] = i;
+		}
+		
+		set_tree(1, INF, 1);
+
+		int start, end = N, selected;
+		for (int i = 0; i < M; i++) {
+			cin >> selected;
+			start = indexOf[selected];
+			cout << end - start - get_value(1, INF, 1, start, end) << " ";
+			update(start);
+			end++;
+			arr[end] = selected;
+			indexOf[selected] = end;
+		}
+		cout << "\n";
+	}
+	return 0;
+}
