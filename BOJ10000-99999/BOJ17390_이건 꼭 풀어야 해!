@@ -1,0 +1,27 @@
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+#define MAX_N 300'000
+
+int arr[MAX_N+1];
+int subsum[MAX_N+1];
+
+int main(){
+	ios_base::sync_with_stdio(false);
+	cin.tie(0);
+	cout.tie(0);
+	
+	int N,Q;
+	cin >> N >> Q;
+	for(int n=1;n<=N;n++)	cin >> arr[n];
+	sort(arr+1, arr+N+1);
+	for(int n=1;n<=N;n++) 	subsum[n] = subsum[n-1] + arr[n];
+	
+	int L, R;
+	for(int q=0;q<Q;q++) {
+		cin >> L >> R;
+		cout << subsum[R] - subsum[L-1] << "\n";
+	}
+}
